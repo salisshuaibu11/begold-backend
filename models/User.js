@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const userSchema = mongoose.Schema({
+const userSchema = Schema({
     name: {
         type: String,
         required: true,
@@ -19,7 +19,11 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         required: true,
         default: false,
-    }
+    },
+    payment: {
+        type: Schema.Types.ObjectId,
+        ref: "Payment",
+    },
 }, {
     timestamps: true
 });
@@ -38,6 +42,6 @@ userSchema.pre("save", async function(next) {
     this.password = await bcrypt.hash(this.password, salt);
 });
 
-const User = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

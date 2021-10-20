@@ -5,8 +5,23 @@ const PaymentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
     },
-    amount: String,
-    status: String,
+    transactions: [{
+        amount: Number,
+        date: {
+            type: Date,
+            default: Date.now(),
+        },
+        transactionStatus: {
+            type: String,
+        },
+        transactionType: {
+            type: String,
+        }
+    }],
+    ballance: {
+        type: Number,
+        default: 0,
+    },
     createdAt: {
         type: Date,
         default: Date.now(),
