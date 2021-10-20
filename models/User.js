@@ -12,7 +12,8 @@ const userSchema = mongoose.Schema({
         unique: true,
     },
     password: {
-        type: Number,
+        type: String,
+        required: true,
     },
     isAdmin: {
         type: Boolean,
@@ -24,6 +25,7 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.methods.matchPassword = async function(enteredPassword) {
+    console.log(enteredPassword)
     return await bcrypt.compare(enteredPassword, this.password);
 };
 

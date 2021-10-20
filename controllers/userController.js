@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
-const genereToken = require("../utils/generateToken");
+const generateToken = require("../utils/generateToken");
 
 // @desc Auth user & get token
 // @route POST /api/users/login
@@ -10,13 +10,13 @@ const authUser = asyncHandler(async (req, res) => {
 
     const user = await User.findOne({email});
 
-    if (user && (await user.mathPassword(password))) {
+    if (user && (await user.matchPassword(password))) {
         res.json({
             _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            token: genereToken(user._id),
+            token: generateToken(user._id),
         });
     } else {
         res.status(401);
@@ -31,7 +31,8 @@ const registerUser = asyncHandler(async(req, res) => {
     const {
         name,
         email,
-        password
+        password,
+        isAdmin
     } = req.body;
 
     const userExists = await User.findOne({email});
@@ -45,6 +46,7 @@ const registerUser = asyncHandler(async(req, res) => {
         name,
         email,
         password,
+        isAdmin
     });
 
     if (user) {
@@ -53,7 +55,7 @@ const registerUser = asyncHandler(async(req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            token: genereToken(user._id),
+            token: generateToken(user._id),
         });
     } else {
         res.status(400);
