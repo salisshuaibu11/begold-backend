@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-const Courses = require("./Courses");
 
 const courseSchema = new Schema({
     course_name: {
