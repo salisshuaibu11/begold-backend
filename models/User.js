@@ -15,6 +15,15 @@ const userSchema = Schema({
         type: String,
         required: true,
     },
+    user_profile: {
+        name: String,
+        email: String,
+        password: String,
+    },
+    user_courses: [{
+        _id: Schema.Types.ObjectId,
+        ref: "course",
+    }],
     isAdmin: {
         type: Boolean,
         required: true,
