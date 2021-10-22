@@ -31,10 +31,10 @@ const courseSchema = new Schema({
         type: String,
         required: true,
     },
-    course_instructor: {
-        type: String,
-        required: true,
-    },
+    course_instructor: [{
+        _id: Schema.Types.ObjectId,
+        ref: "instructor"
+    }],
     course_lessons: {
         ref: "lessons"
     }
