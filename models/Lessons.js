@@ -11,7 +11,10 @@ const lessonsSchema = ({
         required: true,
     },
     lesson_instructor: Schema.Types.ObjectId,
-    lesson_course: [{title: String, video: String}],
+    lesson_course: [{
+        type: Schema.Types.ObjectId,
+        ref: "Course",
+    }],
     lesson_students: [{
         name: String, 
         email: String, 

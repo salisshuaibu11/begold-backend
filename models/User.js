@@ -19,6 +19,9 @@ const userSchema = Schema({
         name: String,
         email: String,
         password: String,
+        gender: String,
+        dob: String,
+        address: String,
     },
     user_courses: {
         type: Schema.Types.ObjectId,
