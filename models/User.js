@@ -23,6 +23,11 @@ const userSchema = Schema({
         dob: String,
         address: String,
     },
+    user_type: {
+        type: String,
+        default: "Student",
+        required: true,
+    },
     user_courses: {
         type: Schema.Types.ObjectId,
         ref: "course"
@@ -32,12 +37,6 @@ const userSchema = Schema({
         required: true,
         default: false,
     },
-    payment: {
-        type: Schema.Types.ObjectId,
-        ref: "Payment",
-    },
-}, {
-    timestamps: true
 });
 
 userSchema.methods.matchPassword = async function(enteredPassword) {

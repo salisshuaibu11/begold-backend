@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const lessonsSchema = ({
-    lesson_id: Schema.Types.ObjectId,
     lesson_topic: {
         type: String,
         required: true,
@@ -10,6 +9,7 @@ const lessonsSchema = ({
         type: Number,
         required: true,
     },
+    lesson_media: String,
     lesson_instructor: Schema.Types.ObjectId,
     lesson_course: [{
         type: Schema.Types.ObjectId,

@@ -13,12 +13,15 @@ const courseSchema = new Schema({
         type: String,
         required: true,
     },
-    course_prerequisite: [String],
+    course_prerequisite: {
+        type: String,
+        enum: ["Knowlege of JS", "Knowledge of CSS"]
+    },
+    course_category: String,
     course_type: {
         type: String,
         required: true
     },
-    course_requirements: [String],
     course_intro_video: {
         type: String,
         required: true,
@@ -31,13 +34,14 @@ const courseSchema = new Schema({
         type: String,
         required: true,
     },
-    course_instructor: [{
+    course_instructor: {
         type: Schema.Types.ObjectId,
         ref: "instructor"
-    }],
-    course_lessons: {
+    },
+    course_lessons: [{
+        type: Schema.Types.ObjectId,
         ref: "lessons"
-    }
+    }]
 });
 
 const Course = model("Course", courseSchema);
