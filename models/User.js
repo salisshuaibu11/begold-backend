@@ -20,10 +20,10 @@ const userSchema = Schema({
         email: String,
         password: String,
     },
-    user_courses: [{
-        _id: Schema.Types.ObjectId,
-        ref: "course",
-    }],
+    user_courses: {
+        type: Schema.Types.ObjectId,
+        ref: "course"
+    },
     isAdmin: {
         type: Boolean,
         required: true,

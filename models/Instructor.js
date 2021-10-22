@@ -19,7 +19,7 @@ const instructorSchema = Schema({
         password: String,
     },
     instructor_lessons: [{
-        _id: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "lessons",
     }]
 });

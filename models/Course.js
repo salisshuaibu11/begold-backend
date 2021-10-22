@@ -32,7 +32,7 @@ const courseSchema = new Schema({
         required: true,
     },
     course_instructor: [{
-        _id: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "instructor"
     }],
     course_lessons: {
